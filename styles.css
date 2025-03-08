@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    font-family: 'BentonSans Principal', sans-serif;                                                
+    text-align: center;
+    background-color: #c8a2c8;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: white;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff5a5f;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li a.active {
+    color: #ff5a5f;
+    font-weight: bold;
+}
+
+.hero {
+    background: url('living-room.jpg') center/cover no-repeat;
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+    justify-content:left;
+    color: white;
+    text-align: left;
+}
+
+.overlay {
+    padding: 20px;
+    max-width: 600px;
+}
+
+.hero h1 span {
+    font-weight: bold;
+}
+
+.video {
+    position: relative;
+    text-align: center;
+}
+
+.video img {
+    width: 100%;
+    max-width: 600px;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: orange;
+    color: white;
+    border-radius: 50%;
+    padding: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.form {
+    background: #c8a2c8;
+    padding: 40px 20px;
+}
+
+.form h2 {
+    color: white;
+}
+
+.form input, .form button {
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.form input {
+    background: white;
+}
+
+.form button {
+    background: #ff5a5f;
+    color: white;
+    cursor: pointer;
+}
+
+iframe{
+  width: 100%;
+  height: 400px;
+}
+
+p{
+  font-size: 12px;
+}
+
+h1{
+  font-weight:lighter;
+  font-size: 50px;
+}
+
+span{
+  color: #dbc9df;
+  font-weight:bolder;
+}
