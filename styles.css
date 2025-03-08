@@ -4,13 +4,20 @@ body {
     text-align: center;
     background-color: #b695c0;
 }
+html{
+  scroll-behavior: smooth;
+}
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: white;
+  display: flex;
+  position: sticky; /* Hace que el header se mantenga fijo */
+  top: 0; /* Se pega en la parte superior */
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: white;
+  z-index: 1000; /* Evita que otros elementos lo cubran */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Opcional: agrega sombra */
 }
 
 .logo {
@@ -145,10 +152,11 @@ input::placeholder{
 }
 
 .about{
-    color: white;
-    font-size: 25px;
-    
+  margin-top: 10px;
+  color: white;
+  font-size: 25px;
 }
+
 
 .about p{
   font-size:20px;
