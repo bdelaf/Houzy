@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: 'BentonSans Principal', sans-serif;                                                
     text-align: center;
-    background-color: #c8a2c8;
+    background-color: #b695c0;
 }
 
 header {
@@ -38,15 +38,15 @@ nav ul li a.active {
 }
 
 .hero {
-    background: url('living-room.jpg') center/cover no-repeat;
+    background: linear-gradient(to right, #b695c0 70%, rgba(0, 0, 0, 0) 100%), url('/img/living.jpg') center/cover no-repeat;
     height: 400px;
     position: relative;
     display: flex;
     align-items: center;
-    margin-left: 100px;
-    justify-content:left;
+    justify-content: left;
     color: white;
     text-align: left;
+    padding-left: 50px;
 }
 
 .overlay {
@@ -63,10 +63,11 @@ nav ul li a.active {
     text-align: center;
 }
 
+/*
 .video img {
     width: 100%;
     max-width: 600px;
-}
+} */
 
 .play-button {
     position: absolute;
@@ -82,8 +83,10 @@ nav ul li a.active {
 }
 
 .form {
-    background: #c8a2c8;
+    background: #b695c0;
     padding: 40px 20px;
+    justify-content: left;
+    width: 100%;
 }
 
 .form h2 {
@@ -93,24 +96,32 @@ nav ul li a.active {
 .form input, .form button {
     display: block;
     width: 80%;
-    max-width: 400px;
     margin: 10px auto;
     padding: 10px;
     border: none;
-    border-radius: 5px;
 }
 
 .form input {
     background: white;
+    border-radius: 15px;
+    width: 47%;
 }
 
 .form button {
-    background: #ff5a5f;
+    background: #fe4c1c;
+    width: 10%;
+    font-weight: bold;
     color: white;
     cursor: pointer;
+    border-radius: 15px;
 }
 
 iframe{
+  width: 100%;
+  height: 400px;
+}
+
+.llaves{
   width: 100%;
   height: 400px;
 }
@@ -127,4 +138,26 @@ h1{
 span{
   color: #dbc9df;
   font-weight:bolder;
+}
+
+input::placeholder{
+  color: #fd6c45;
+}
+
+.about{
+    color: white;
+    font-size: 25px;
+    
+}
+
+.about p{
+  font-size:20px;
+}
+
+.form h2{
+  font-size: 50px;
+}
+
+.info-form{
+    width: 50%;
 }
