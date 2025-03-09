@@ -3,6 +3,7 @@ body {
     font-family: 'BentonSans Principal', sans-serif;                                                
     text-align: center;
     background-color: #b695c0;
+    width: 100%;
 }
 html{
   scroll-behavior: smooth;
@@ -14,16 +15,17 @@ header {
   top: 0; /* Se pega en la parte superior */
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   background: white;
   z-index: 1000; /* Evita que otros elementos lo cubran */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Opcional: agrega sombra */
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ff5a5f;
+  cursor: pointer;
+  margin-left: 50px;
+  width: 100px; /* Ajusta el ancho */
+  height: auto;  /* Mantiene la proporción */
 }
 
 nav ul {
@@ -37,11 +39,13 @@ nav ul {
 nav ul li a {
     text-decoration: none;
     color: black;
+    transition: all 0.2s ease-in-out;
 }
 
-nav ul li a.active {
+nav ul li a:hover {
     color: #ff5a5f;
     font-weight: bold;
+    transform: scale(0.5);
 }
 
 .hero {
@@ -68,6 +72,7 @@ nav ul li a.active {
 .video {
     position: relative;
     text-align: center;
+    height: 450px;
 }
 
 /*
@@ -87,40 +92,6 @@ nav ul li a.active {
     padding: 20px;
     font-size: 24px;
     cursor: pointer;
-}
-
-.form {
-    background: #b695c0;
-    padding: 40px 20px;
-    justify-content: left;
-    width: 100%;
-}
-
-.form h2 {
-    color: white;
-}
-
-.form input, .form button {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-    padding: 10px;
-    border: none;
-}
-
-.form input {
-    background: white;
-    border-radius: 15px;
-    width: 47%;
-}
-
-.form button {
-    background: #fe4c1c;
-    width: 10%;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-    border-radius: 15px;
 }
 
 iframe{
@@ -151,21 +122,95 @@ input::placeholder{
   color: #fd6c45;
 }
 
-.about{
-  margin-top: 10px;
-  color: white;
+.about {
   font-size: 25px;
+  margin-top: 60px; /* Más espacio */
+  padding: 60px 20px; /* Mayor separación */
+  background: #dbc9df; /* Fondo diferente para diferenciarlo */
+  color: #3d2c4d; /* Color más oscuro para contraste */
+  text-align: center;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-
-.about p{
-  font-size:20px;
+.about h2 {
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff; /* Blanco para destacar */
 }
 
-.form h2{
-  font-size: 50px;
+.about p {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 20px auto;
+  line-height: 1.6;
 }
 
-.info-form{
-    width: 50%;
+.form {
+  background: #b695c0;
+  padding: 80px 20px; /* Más espacio para diferenciarlo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.form h2 {
+  font-size: 45px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.info-form {
+  width: 40%;
+  max-width: 500px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.131);
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form input {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.form button {
+  width: 50%;
+  padding: 12px;
+  background: #ff5a5f;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+}
+
+.form button:hover {
+  background: #fe4c1c;
+}
+
+.img-edi{
+  width: 50%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .img-edi {
+    width: 80%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .img-edi {
+    width: 100%;
+    height: auto;
+  }
 }
