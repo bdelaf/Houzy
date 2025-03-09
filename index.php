@@ -33,13 +33,27 @@
     </section>
     
     <section class="form" id="anotate">
-        <form class="info-form">
+        <form class="info-form" method="POST">
             <h2>Quiero ser parte</h2>
-            <input class="placeholder-form" type="text" placeholder="Nombre y apellido">
-            <input class="placeholder-form" type="text" placeholder="Contacto">
-            <input class="placeholder-form" type="text" placeholder="Duda">
+            <input class="placeholder-form" 
+                type="text" 
+                placeholder="Nombre y apellido"
+                name="nombre"
+                required>
+            <input class="placeholder-form" 
+                type="text" 
+                placeholder="Contacto"
+                name="contacto"
+                required>
+            <input class="placeholder-form" 
+                type="text" 
+                placeholder="Duda"
+                name="mensaje"
+                required>
             <button type="submit">Enviar</button>
         </form>
+        <!-- Aquí imprimimos el mensaje de éxito/error -->
+        <?= $mensaje ?>
     </section>
 
     <section class="about" id="about-us">
@@ -50,3 +64,36 @@
     <script src="script/script.js"></script>
 </body>
 </html>
+
+
+<?php
+
+// Incluir conexión
+require_once('conex.php');
+$conex = conex();
+
+$mensaje = ""; // Variable para mostrar mensaje al final
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nombre   = $_POST['nombre'];
+    $contacto = $_POST['contacto'];
+    $mensajeF = $_POST['mensaje'];
+
+    // (Opcional) Escapar para evitar inyección
+    $nombre   = mysqli_real_escape_string($conex, $nombre);
+    $contacto = mysqli_real_escape_string($conex, $contacto);
+    $mensajeF = mysqli_real_escape_string($conex, $mensajeF);
+
+    $sql = "INSERT INTO formulario (nombre, contacto, mensaje)
+            VALUES ('$nombre','$contacto','$mensajeF')";
+    $result = mysqli_query($conex, $sql);
+
+    if ($result) {
+        // Guardamos mensaje de éxito
+        $mensaje = "<p style='color: green;'>Datos guardados correctamente.</p>";
+    } else {
+        // Guardamos mensaje de error
+        $mensaje = "<p style='color: red;'>Error: " . mysqli_error($conex) . "</p>";
+    }
+}
+?>
