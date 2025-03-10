@@ -52,14 +52,24 @@
                 required>
             <button type="submit">Enviar</button>
         </form>
-        <!-- Aquí imprimimos el mensaje de éxito/error -->
         <?= $mensaje ?>
     </section>
 
     <section class="about" id="about-us">
       <h2>Sobre nosotros</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis mauris varius, elementum sem ut, efficitur elit. Pellentesque faucibus, mauris maximus pretium posuere, nulla lectus varius augue, at malesuada diam magna id ipsum. Quisque pellentesque magna eu ultrices sodales. In sed venenatis purus, finibus vulputate eros. Curabitur feugiat eleifend dui eget rhoncus. Aenean vestibulum metus molestie tempor imperdiet. Maecenas accumsan varius ante ac venenatis. In magna ligula, consectetur in risus et, scelerisque cursus mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi eget sagittis risus. Ut mattis quam arcu, ut sagittis justo tempor vitae. Curabitur.</p>
-      <img class="img-edi" src="img/edificio.jpg" alt="">
+      <div class="about-content">
+        <p>
+          En <span>Houzy</span>, estamos revolucionando el mercado inmobiliario al ofrecer una plataforma 
+          que pone el control en manos de los usuarios. Nuestra misión es facilitar el proceso de compra y venta 
+          de propiedades de manera más transparente, eficiente y accesible. Nos alejamos de las comisiones excesivas 
+          y los intermediarios innecesarios, brindando a compradores y vendedores la libertad de gestionar sus propios 
+          acuerdos.
+          <br><br>
+          Nuestro compromiso es brindar una experiencia intuitiva, segura y completamente autogestionada, que permita a 
+          todos tener acceso directo a las mejores opciones inmobiliarias sin complicaciones ni sorpresas.
+        </p>
+        <img class="img-edi" src="img/edificio.jpg" alt="Edificio">
+      </div>
     </section>
     <script src="script/script.js"></script>
 </body>
@@ -68,18 +78,16 @@
 
 <?php
 
-// Incluir conexión
 require_once('conex.php');
 $conex = conex();
 
-$mensaje = ""; // Variable para mostrar mensaje al final
+$mensaje = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre   = $_POST['nombre'];
     $contacto = $_POST['contacto'];
     $mensajeF = $_POST['mensaje'];
 
-    // (Opcional) Escapar para evitar inyección
     $nombre   = mysqli_real_escape_string($conex, $nombre);
     $contacto = mysqli_real_escape_string($conex, $contacto);
     $mensajeF = mysqli_real_escape_string($conex, $mensajeF);
@@ -89,10 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = mysqli_query($conex, $sql);
 
     if ($result) {
-        // Guardamos mensaje de éxito
         $mensaje = "<p style='color: green;'>Datos guardados correctamente.</p>";
     } else {
-        // Guardamos mensaje de error
         $mensaje = "<p style='color: red;'>Error: " . mysqli_error($conex) . "</p>";
     }
 }
