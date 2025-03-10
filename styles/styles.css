@@ -49,7 +49,7 @@ nav ul li a:hover {
 }
 
 .hero {
-    background: linear-gradient(to right, #b695c0 70%, rgba(0, 0, 0, 0) 100%), url('../img/fotoprincipal.jpg') center/cover no-repeat;
+    background: linear-gradient(to right, #b695c0 70%, rgba(0, 0, 0, 0) 100%), url('../img/aboutusfoto.jpg') center/cover no-repeat;
     height: 400px;
     position: relative;
     display: flex;
@@ -260,4 +260,24 @@ input::placeholder{
   font-family: 'BentonSans Principal', sans-serif;
   font-size: 20px;
   font-weight: bolder;
+}
+
+@media (max-width: 768px) {
+  .logo{
+    content: url('../img/isotipo1.png');
+    width: 50px;
+    margin-right: 50px;
+  }
+  .info-form{
+    width: 80%;
+  }
+  .hide{
+    display: none;
+  }
+  .hero{
+    margin-bottom: 40px;
+  }
+  .overlay p{
+    font-size: 15px;
+  }
 }

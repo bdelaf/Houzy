@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <a href="#"><img src="img/logo.png" alt="logo" class="logo"></a>
         <nav id="home">
             <ul>
-                <li><a href="#" class="active">home</a></li>
+                <li><a href="#" class="hide" >home</a></li>
                 <li><a href="#about-us">quienes somos</a></li>
                 <li><a href="#anotate">anotate</a></li>
             </ul>
