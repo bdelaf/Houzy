@@ -1,3 +1,26 @@
+<?php
+session_start(); //Iniciamos la sesion (UNICA)
+require_once('conex.php');
+$conex = conex();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nombre   = mysqli_real_escape_string($conex, $_POST['nombre']);
+    $contacto = mysqli_real_escape_string($conex, $_POST['contacto']);
+    $mensajeF = mysqli_real_escape_string($conex, $_POST['mensaje']);
+
+    $sql = "INSERT INTO formulario (nombre, contacto, mensaje) VALUES ('$nombre','$contacto','$mensajeF')";
+    $result = mysqli_query($conex, $sql);
+
+    if ($result) {
+        $_SESSION['flash'] = "<p class='mensajeExito'>Datos guardados correctamente.</p>";
+    } else {
+        $_SESSION['flash'] = "<p class='mensajeError'>Error: " . mysqli_error($conex) . "</p>";
+    }
+
+    header("Location: index.php#anotate"); //El '#anotate' sirve para que no vuelva arriba del todo luego de ingresar datos en el formulario
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,6 +29,19 @@
     <title>Houzy</title>
     <link href="https://fonts.cdnfonts.com/css/bentonsans-regular" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
+
+    <link rel="icon" type="image/png" sizes="64x64" href="img/isotipo1.png">
+
+    <script>
+        let navType = performance.getEntriesByType("navigation")[0]?.type;
+        if (!navType && performance.navigation) {
+            navType = performance.navigation.type === 1 ? "reload" : "navigate";
+        }
+        // Si el hash es "#anotate" y NO es una recarga manual, establecemos el flag.
+        if (window.location.hash === "#anotate" && navType !== "reload") {
+            sessionStorage.setItem("justSubmitted", "1");
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -51,8 +87,14 @@
                 name="mensaje"
                 required>
             <button type="submit">Enviar</button>
+            <?php
+            //Se muestra el mensaje debido dependiendo de si es valido o da error
+            if (isset($_SESSION['flash'])) {
+                echo $_SESSION['flash'];
+                unset($_SESSION['flash']);
+            }
+            ?>
         </form>
-        <?= $mensaje ?>
     </section>
 
     <section class="about" id="about-us">
@@ -68,38 +110,10 @@
           Nuestro compromiso es brindar una experiencia intuitiva, segura y completamente autogestionada, que permita a 
           todos tener acceso directo a las mejores opciones inmobiliarias sin complicaciones ni sorpresas.
         </p>
-        <img class="img-edi" src="img/edificio.jpg" alt="Edificio">
+        <img class="img-edi" src="img/aboutusfoto.jpg" alt="Edificio">
       </div>
     </section>
     <script src="script/script.js"></script>
+    <script src="script/recargaPagina.js"></script>  
 </body>
 </html>
-
-
-<?php
-
-require_once('conex.php');
-$conex = conex();
-
-$mensaje = "";
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre   = $_POST['nombre'];
-    $contacto = $_POST['contacto'];
-    $mensajeF = $_POST['mensaje'];
-
-    $nombre   = mysqli_real_escape_string($conex, $nombre);
-    $contacto = mysqli_real_escape_string($conex, $contacto);
-    $mensajeF = mysqli_real_escape_string($conex, $mensajeF);
-
-    $sql = "INSERT INTO formulario (nombre, contacto, mensaje)
-            VALUES ('$nombre','$contacto','$mensajeF')";
-    $result = mysqli_query($conex, $sql);
-
-    if ($result) {
-        $mensaje = "<p style='color: green;'>Datos guardados correctamente.</p>";
-    } else {
-        $mensaje = "<p style='color: red;'>Error: " . mysqli_error($conex) . "</p>";
-    }
-}
-?>
