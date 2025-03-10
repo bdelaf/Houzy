@@ -49,7 +49,7 @@ nav ul li a:hover {
 }
 
 .hero {
-    background: linear-gradient(to right, #b695c0 70%, rgba(0, 0, 0, 0) 100%), url('/img/living.jpg') center/cover no-repeat;
+    background: linear-gradient(to right, #b695c0 70%, rgba(0, 0, 0, 0) 100%), url('../img/fotoprincipal.jpg') center/cover no-repeat;
     height: 400px;
     position: relative;
     display: flex;
@@ -74,12 +74,6 @@ nav ul li a:hover {
     text-align: center;
     height: 450px;
 }
-
-/*
-.video img {
-    width: 100%;
-    max-width: 600px;
-} */
 
 .play-button {
     position: absolute;
@@ -169,7 +163,7 @@ input::placeholder{
 
 .about .img-edi {
   flex: 1;
-  max-width: 50%;
+  max-width: 40%;
   height: auto;
   border-radius: 10px;
 }
@@ -252,4 +246,18 @@ input::placeholder{
     width: 100%;
     height: auto;
   }
+}
+
+.mensajeExito{
+  color: #33FF35;
+  font-family: 'BentonSans Principal', sans-serif;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.mensajeError{
+  color: #FF3333;
+  font-family: 'BentonSans Principal', sans-serif;
+  font-size: 20px;
+  font-weight: bolder;
 }
