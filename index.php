@@ -8,16 +8,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contacto = mysqli_real_escape_string($conex, $_POST['contacto']);
     $mensajeF = mysqli_real_escape_string($conex, $_POST['mensaje']);
 
+    // Verificar si el contacto ya existe en la base de datos
+    $consulta = "SELECT * FROM formulario WHERE contacto = '$contacto'";
+    $resultado = mysqli_query($conex, $consulta);
+    if (mysqli_num_rows($resultado) > 0) {
+        $_SESSION['flash'] = "<p class='mensajeError'>Error: El contacto ya está ingresado.</p>";
+        header("Location: index.php#anotate");
+        exit;
+    }
+
+    // Si el contacto no existe, proceder con la inserción
     $sql = "INSERT INTO formulario (nombre, contacto, mensaje) VALUES ('$nombre','$contacto','$mensajeF')";
     $result = mysqli_query($conex, $sql);
 
     if ($result) {
-        $_SESSION['flash'] = "<p class='mensajeExito'>Datos guardados correctamente.</p>";
+        $_SESSION['flash'] = "<p class='mensajeExito'>Datos guardados correctamente. Gracias por ayudarnos!</p>";
     } else {
         $_SESSION['flash'] = "<p class='mensajeError'>Error: " . mysqli_error($conex) . "</p>";
     }
 
-    header("Location: index.php#anotate"); //El '#anotate' sirve para que no vuelva arriba del todo luego de ingresar datos en el formulario
+    header("Location: index.php#anotate");
     exit;
 }
 ?>

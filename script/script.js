@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (errores.length > 0) {
           alert("⚠️ Hay errores en el formulario:\n\n" + errores.join("\n"));
       } else {
-          alert("✅ Formulario enviado con éxito.");
+          //alert("✅ Formulario enviado con éxito.");
           form.submit(); 
           setTimeout(() => {
               location.reload();
